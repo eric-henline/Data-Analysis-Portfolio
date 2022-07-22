@@ -1,6 +1,7 @@
--- Write a SQL statement that calculates the average duration in days rounded to 2 decimal places for each approved outage type across both 2016 and 2017. Don't forget to Order this by Reason and Year.
-
--- Please note: The average duration in days should be rounded to 2 decimal places for ease of comparison. Additionally, include the overall count of outage events per outage type
+-- Write a SQL statement that calculates the average duration in days rounded to 2 decimal places for each approved outage type across both 2016 and 2017. 
+-- Order this by Reason and Year.
+-- The average duration in days should be rounded to 2 decimal places for ease of comparison. 
+-- Additionally, include the overall count of outage events per outage type
 
 SELECT
   	Status,
