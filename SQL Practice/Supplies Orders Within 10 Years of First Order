@@ -1,0 +1,28 @@
+A school supplies company has a record of its customers and their orders. Find the customer(s) with the highest order price for orders placed within 10 years of the first order (earliest order_date) in the database. Print the customer name and price.
+
+Schema:
+table: customers
+Name		Type	Description
+ID		string	ID of the customer
+name		string	name of the customer
+order_id	string	ID of customer's order
+
+table: orders
+Name		Type	Description
+ID		string	ID of the order
+price		int	price of the order
+order_date	date	date of the order
+
+MySQL Query:
+-- I used an INNER JOIN to join the two tables, and a WHERE clause with the DATE_ADD function to only select orders with dates less than 10 years after the earliest order date in the table.  Then, by ordering the results by descending price and limiting the output to 1, I get only the most expensive order from within that timeframe.
+
+SELECT 
+    c.name,
+    o.price
+FROM customers AS c
+INNER JOIN orders AS o ON c.order_id = o.id
+WHERE 
+    o.order_date <= 
+    DATE_ADD((SELECT MIN(o.order_date) FROM orders as o), INTERVAL 10 year)
+ORDER BY o.price DESC
+LIMIT 1;
